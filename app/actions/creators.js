@@ -1,4 +1,5 @@
 import { CHANGE_ITEMS_TO_DISPLAY, SELECT_PAGE, SIGN_IN, SIGN_OUT } from './types'
+import authData from '../auth'
 
 export const changeItemsToDisplay = (payload) => {
   return { 
@@ -14,9 +15,11 @@ export const selectPage = (payload) => {
   }
 }
 
-export const signIn = () => {
-  return {
-    type: SIGN_IN
+export const signIn = (payload) => {
+  if(payload.login === authData.login && payload.password === authData.password) {
+    return {
+      type: SIGN_IN
+    }
   }
 }
 
