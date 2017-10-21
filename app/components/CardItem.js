@@ -13,10 +13,10 @@ const CardItem = styled.li`
 
 const CardPic = styled.div`
   height: 50px;
-  background-color: ${card => card.id % 2 === 0 ? 'orange' : 'green'};
+  background-color: ${p => p.id % 2 === 0 ? 'orange' : 'green'};
 `
 
-const CardTitle = styled.span`
+const CardTitle = styled.input`
   font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
   font-size: 18px;
   margin-top: 10px;
@@ -25,8 +25,8 @@ const CardTitle = styled.span`
 export default ({ card }) => {
   return (
     <CardItem>
-      <CardPic />
-      <CardTitle>{card.title}</CardTitle>
+      <CardPic id={card.id} />
+      <CardTitle value={card.title} />
     </CardItem>
   )
 }
