@@ -1,8 +1,9 @@
-import { CHANGE_ITEMS_TO_DISPLAY, SELECT_PAGE, SIGN_IN, SIGN_OUT } from '../actions/types'
+import { CHANGE_ITEMS_TO_DISPLAY, SELECT_PAGE, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT } from '../actions/types'
 import data from '../data'
 
 const INITIAL_STATE = {
   signedIn: false,
+  signInError: '',
   itemsToDisplay: 10,
   data,
   selectedPage: 1
@@ -22,10 +23,16 @@ export default (state = INITIAL_STATE, action) => {
         selectedPage: payload,
       }
     }
-    case SIGN_IN: {
+    case SIGN_IN_SUCCESS: {
       return {
         ...state,
         signedIn: true
+      }
+    }
+    case SIGN_IN_FAIL: {
+      return {
+        ...state,
+        signInError: 'Error during signing in, please try again.'
       }
     }
     case SIGN_OUT: {
