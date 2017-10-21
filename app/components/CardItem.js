@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CardItem = styled.div`
+const CardItem = styled.li`
   display: flex;
   flex-direction: column;
   width: 200px;
-  margin: 0 10px 10px;
+  margin: 0 10px;
+  margin-bottom: 10px;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
 `
 
 const CardPic = styled.div`

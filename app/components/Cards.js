@@ -6,6 +6,7 @@ import data from '../data'
 const CardsList = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
   padding: 0;
 `
@@ -13,7 +14,7 @@ const CardsList = styled.ul`
 export default () => {
   return (
     <CardsList>
-      {data.map(item => <li key={item.id}><CardItem card={item} /></li>)}
+      {data.map(item => <CardItem key={item.id} card={item} />)}
     </CardsList>
   )
 }
