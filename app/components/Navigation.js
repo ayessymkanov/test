@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from './Layout'
+import ItemsToDisplay from './ItemsToDisplay'
 
 const Nav = styled.nav`
   height: 50px;
@@ -12,20 +13,14 @@ const NavContent = styled.div`
   justify-content: flex-end;
 `
 
-const Select = styled.select`
 
-`
 
 export default () => {
   return (
     <Nav>
       <Container>
         <NavContent>
-          <Select>
-            <option>5 items</option>
-            <option>10 items</option>
-            <option>20 items</option>
-          </Select>
+          <ItemsToDisplay />
         </NavContent>
       </Container>
     </Nav>

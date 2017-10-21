@@ -1,7 +1,9 @@
 import { CHANGE_ITEMS_TO_DISPLAY } from '../actions/types'
+import data from '../data'
 
 const INITIAL_STATE = {
-  itemsToDisplay: 5,
+  itemsToDisplay: 10,
+  data
 }
 export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action
@@ -11,6 +13,9 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         itemsToDisplay: payload
       }
+    }
+    default: {
+      return INITIAL_STATE
     }
   }
 }
