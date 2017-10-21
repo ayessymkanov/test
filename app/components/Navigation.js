@@ -11,9 +11,8 @@ const Nav = styled.nav`
 const NavContent = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `
-
-
 
 export default () => {
   return (

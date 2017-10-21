@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 import CardItem from './CardItem'
+import Pagination from './Pagination'
 
 const CardsList = styled.ul`
   display: flex;
@@ -23,10 +24,14 @@ class Component extends React.Component {
     })
   }
   render() {
+    const { data, itemsToDisplay } = this.props
     return (
-      <CardsList>
-        {this.state.data.map(item => <CardItem key={item.id} card={item} />)}
-      </CardsList>
+      <div>
+        <CardsList>
+          {this.state.data.map(item => <CardItem key={item.id} card={item} />)}
+        </CardsList>
+        <Pagination pages={Math.ceil(data.length / itemsToDisplay)} />
+      </div>
     )
   }
 }
