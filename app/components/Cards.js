@@ -12,45 +12,25 @@ const CardsList = styled.ul`
   padding: 0;
 `
 
-class Component extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: props.data.slice(0, props.itemsToDisplay)
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    const { itemsToDisplay, selectedPage, data } = nextProps
-    if(selectedPage > 1) {
-      this.setState({
-        data: data.slice(itemsToDisplay * (selectedPage - 1), itemsToDisplay * selectedPage)
-      })
-    } else {
-      this.setState({
-        data: data.slice(0, itemsToDisplay)
-      })
-    }
-  }
-  render() {
-    const { data, itemsToDisplay, selectPage, selectedPage } = this.props
-    return (
-      <div>
-        <CardsList>
-          {this.state.data.map(item => <CardItem key={item.id} card={item} />)}
-        </CardsList>
-        <Pagination pages={Math.ceil(data.length/itemsToDisplay)} selectPage={selectPage} selectedPage={selectedPage} />
-      </div>
-    )
+const mapStateToProps = ({ itemsToDisplay, data, selectedPage }) => {
+  const dataToDisplay = data.slice(itemsToDisplay * (selectedPage - 1), itemsToDisplay * selectedPage)
+  return {
+    itemsToDisplay,
+    dataToDisplay,
+    selectedPage,
+    data
   }
 }
 
-const mapStateToProps = ({ itemsToDisplay, data, selectedPage, dataToDisplay }) => {
-  return {
-    itemsToDisplay,
-    data,
-    selectedPage,
-    dataToDisplay
-  }
+const Component = ({ dataToDisplay, itemsToDisplay, selectPage, selectedPage, data }) => {
+  return (
+    <div>
+      <CardsList>
+        {dataToDisplay.map(item => <CardItem key={item.id} card={item} />)}
+      </CardsList>
+      <Pagination pages={Math.ceil(data.length/itemsToDisplay)} selectPage={selectPage} selectedPage={selectedPage} />
+    </div>
+  )
 }
 
 export default connect(mapStateToProps, { selectPage })(Component)
