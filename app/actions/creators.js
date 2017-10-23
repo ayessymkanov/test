@@ -1,4 +1,4 @@
-import { CHANGE_ITEMS_TO_DISPLAY, SELECT_PAGE, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT } from './types'
+import { CHANGE_ITEMS_TO_DISPLAY, SELECT_PAGE, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT, EDIT } from './types'
 import authData from '../auth'
 
 export const changeItemsToDisplay = (payload) => {
@@ -30,5 +30,12 @@ export const signIn = (payload) => {
 export const signOut = () => {
   return {
     type: SIGN_OUT
+  }
+}
+
+export const edit = (payload) => {
+  return {
+    type: EDIT,
+    payload
   }
 }

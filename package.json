@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/ayessymkanov/test#readme",
   "dependencies": {
+    "babel-preset-env": "^1.6.1",
     "react": "^16.0.0",
+    "react-click-outside": "^3.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",

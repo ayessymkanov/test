@@ -1,4 +1,4 @@
-import { CHANGE_ITEMS_TO_DISPLAY, SELECT_PAGE, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT } from '../actions/types'
+import { CHANGE_ITEMS_TO_DISPLAY, SELECT_PAGE, SIGN_IN_SUCCESS, SIGN_IN_FAIL, SIGN_OUT, EDIT } from '../actions/types'
 import data from '../data'
 
 const INITIAL_STATE = {
@@ -39,6 +39,14 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         signedIn: false
+      }
+    }
+    case EDIT: {
+      return {
+        ...state,
+        data: [...state.data.map(item => {
+          return item.id === payload.id ? {...item, title: payload.title} : item
+        })]
       }
     }
     default: {
